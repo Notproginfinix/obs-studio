@@ -44,6 +44,7 @@
 #include <iostream>
 #include <sstream>
 #ifdef _WIN32
+#include <shellapi.h>
 #include <windows.h>
 #else
 #include <signal.h>
