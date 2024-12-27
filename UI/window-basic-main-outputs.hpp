@@ -37,6 +37,8 @@ struct BasicOutputHandler {
 	obs_scene_t *vCamSourceScene = nullptr;
 	obs_sceneitem_t *vCamSourceSceneItem = nullptr;
 
+	std::vector<OBSEncoder> simulcastEncoders;
+
 	std::string outputType;
 	std::string lastError;
 
@@ -99,6 +101,8 @@ protected:
 						      size_t main_audio_mixer, std::optional<size_t> vod_track_mixer,
 						      std::function<void(std::optional<bool>)> continuation);
 	OBSDataAutoRelease GenerateMultitrackVideoStreamDumpConfig();
+	void CreateSimulcastEncoders(const char *encoderId);
+	void SimulcastEncodersUpdate(obs_data_t *videoSettings, int videoBitrate);
 };
 
 BasicOutputHandler *CreateSimpleOutputHandler(OBSBasic *main);
